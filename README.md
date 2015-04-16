@@ -1,2 +1,2 @@
-# Header
-This is my folder for CS14 labs.
+# CS14 LABS
+This is where my CS14 labs are stored.
