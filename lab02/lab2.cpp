@@ -23,32 +23,22 @@ bool isPrime(int i) // checks if a number is prime
 	}
 }
 
-int primeCount(forward_list<int> lst, forward_list<int>::iterator &it)
-{
-	if(it == lst.end()) // base case if the end of the list is reached
-	{
-		return 0;
-	}
-	else if(isPrime(*it) == true) // if the value pointed to by it is prime
-	{
-		// add 1 to the count and recursively call primeCount 
-		return 1 + primeCount(lst, ++it); // increment it
-	}
-	else
-	{
-		// don't add 1 to the count and recusively call primeCount
-		return primeCount(lst, ++it);
-	}
-	return -1; // to avoid error of reaching a non void function
-}
-
 int primeCount(forward_list<int> lst)
 {
-	forward_list<int>::iterator itt = lst.begin();
-	
-	int tot = primeCount(lst, itt);
-	
-	return tot;
+	if(lst.empty() == true) return 0; // base case
+	else
+	{
+		if(isPrime(lst.front()) == true) // check if the first value is prime
+		{
+			lst.pop_front(); // remove the first value in the list
+			return 1 + primeCount(lst); // add 1 and call primeCount recursively
+		}
+		else // if not prime don't add
+		{
+			lst.pop_front(); // remove the first value in the list
+			return primeCount(lst); // call primeCount recursively 
+		}
+	}
 }
 
 int main()
@@ -311,5 +301,25 @@ int main()
 	printLots(l19, l21);
 	cout << endl;
 	
+	cout << "Testing primeCount again" << endl;
+	forward_list<int> l22;
+	l22.push_front(3);
+	l22.push_front(2);
+	l22.push_front(7);
+	l22.push_front(3);
+	l22.push_front(5);
+	l22.push_front(51);
+	
+	print(l22);
+	cout << endl;
+	cout << "primeCount: " << primeCount(l22) << endl;
+	
+	cout << "Testing primeCount on an empty list" << endl;
+	forward_list<int> l23;
+	cout << "primeCount: " << primeCount(l23) << endl;
+	
+	cout << "Testing primeCount on a list of size 1" << endl;
+	l23.push_front(5);
+	cout << "primeCount: " << primeCount(l23) << endl;
 	return 0;
 }
