@@ -4,15 +4,23 @@
 
 using namespace std;
 
-typedef int Type;
-
-int primeCount(forward_list<int> lst)
+bool isPrime(int i) // checks if a number is prime
 {
-	forward_list<int>::iterator itt = lst.begin();
-	
-	int tot = primeCount(lst, itt);
-	
-	return tot;
+	if(i <= 1) return false; // 0, 1, and negative numbers are not prime
+	else 
+	{
+		// check the ints between 2 and i - 1 and check if one divides i evenly
+		for(int j = 2; j < i; ++j)
+		{
+			// if a number that divides i without a remainer is found, 
+			// that means is not prime
+			if(i % j == 0)
+			{
+				return false;
+			}
+		}
+		return true;
+	}
 }
 
 int primeCount(forward_list<int> lst, forward_list<int>::iterator &it)
@@ -34,80 +42,13 @@ int primeCount(forward_list<int> lst, forward_list<int>::iterator &it)
 	return -1; // to avoid error of reaching a non void function
 }
 
-bool isPrime(int i) // checks if a number is prime
+int primeCount(forward_list<int> lst)
 {
-	if(i <= 1) return false; // 0, 1, and negative numbers are not prime
-	else 
-	{
-		// check the ints between 2 and i - 1 and check if one divides i evenly
-		for(int j = 2; j < i; ++j)
-		{
-			// if a number that divides i without a remainer is found, 
-			// that means is not prime
-			if(i % j == 0)
-			{
-				return false;
-			}
-		}
-		return true;
-	}
-}
-
-// copies list L into P in reverse order
-void listCopy(forward_list<Type> L, forward_list<Type> &P)
-{
-	P.resize(0); // resize P to size 0
-	forward_list<Type>::iterator it;
-	for(it = L.begin(); it != L.end(); ++it)
-	{
-		//push front all of L's values onto P so that they will be reversed in P
-		P.push_front(*it);
-	}
-}
-
-void printLots(forward_list<Type> L, forward_list<int> P)
-{
-	int positionInL = 0;
-	forward_list<Type>::iterator itL = L.begin(); // iterator for list L
-	forward_list<int>::iterator itP = P.begin(); // iterator for list P
-	for(itL = L.begin(); itL != L.end(); itL++) // print the values in list
-	{
-		if(itP == P.end()) break; //if end of list P is reached break from loop
-		if(*itP == positionInL) 
-		{
-			// print the value of L at position specified by P
-			cout << *itL << ' ';
-			itP++; // increment itP
-		}
-		positionInL++; // increment positionInL
-	}
-	forward_list<Type>::iterator itLS = L.begin();
-	int sizeL = 0;
-	// count the number of elements in list L
-	for(itLS = L.begin(); itLS != L.end(); itLS++)
-	{
-		sizeL++;
-	}
-	forward_list<Type>::iterator itPS = P.begin();
-	for(itPS = P.begin(); itPS != P.end(); itPS++)
-	{
-		 // check if any of the positions specified by P are out of bounds
-		if(*itPS >= sizeL)
-		{
-			cout << "Error. Trying to access a position that is out of bounds";
-			cout << endl;
-			break;
-		}
-	}
-}
-
-void print(forward_list<Type> &L) // prints out the values in a list
-{
-	forward_list<Type>::iterator itt;
-	for(itt = L.begin(); itt != L.end(); ++itt) // print each value in a list
-	{
-		cout << *itt << ' ';
-	}
+	forward_list<int>::iterator itt = lst.begin();
+	
+	int tot = primeCount(lst, itt);
+	
+	return tot;
 }
 
 int main()
@@ -175,8 +116,10 @@ int main()
 	forward_list<int> l6;
 	l6.push_front(3);
 	l6.push_front(0);
+	cout << "List: ";
 	print(l5);
 	cout << endl;
+	cout << "printLots: ";
 	printLots(l5, l6);
 	cout << endl;
 	
@@ -184,27 +127,42 @@ int main()
 	l7.push_front(9);
 	forward_list<int> l8;
 	for(int i = 50; i >= 5; i -= 5) l8.push_front(i);
+	cout << "List: ";
 	print(l8);
 	cout << endl;
+	cout << "positions: ";
+	print(l7);
+	cout << endl;
+	cout << "printLots: ";
 	printLots(l8, l7);
 	cout << endl;
 	l7.push_front(4);
+	cout << "positions: ";
+	print(l7);
+	cout << endl;
+	cout << "printLots: ";
 	printLots(l8, l7);
 	cout << endl;
 	l7.push_front(0);
+	cout << "positions: ";
+	print(l7);
+	cout << endl;
+	cout << "printLots: ";
 	printLots(l8, l7);
 	cout << endl;
 	cout << "Testing for out of bounds error" << endl;
 	forward_list<int> l9;
 	l9.push_front(10);
 	printLots(l8, l9);
+	l9.push_front(3);
+	printLots(l8, l9); // should give an error
 	
 	cout << "Testing elementSwap" << endl;
 	cout << "Testing swap on a list of size 0" << endl;
-	List l11;
+	List<int> l11;
 	l11.elementSwap(0);
 	cout << "Testing swap on a list of size 1" << endl;
-	List l12;
+	List<int> l12;
 	l12.push(5);
 	l12.elementSwap(0);
 	cout << "Testing swap on a list of size 2" << endl;
@@ -218,7 +176,7 @@ int main()
 	l12.display();
 	cout << endl;
 	cout << "Testing elementSwap on a list with several elements" << endl;
-	List l10;
+	List<int> l10;
 	l10.push(1);
 	l10.push(30);
 	l10.push(45);
@@ -261,5 +219,93 @@ int main()
 	l14.push_front(17);
 	
 	cout << "Prime count: " << primeCount(l14) << endl;
+	
+	cout << "Testing elementSwap on a list of chars" << endl;
+	List<char> l15;
+	l15.push('g');
+	l15.push('e');
+	l15.push('k');
+	l15.push('j');
+	l15.push('t');
+	l15.push('j');
+	l15.push('r');
+	
+	cout << "Original: ";
+	l15.display();
+	cout << endl;
+	l15.elementSwap(5);
+	l15.display();
+	cout << endl;
+	
+	cout << "Testing elementSwap on a list of chars at the begining" << endl;
+	l15.elementSwap(0);
+	l15.display();
+	cout << endl;
+	
+	cout << "Testing elementSwap on a list of chars at the middle" << endl;
+	l15.elementSwap(3);
+	l15.display();
+	cout << endl;
+	
+	cout << "Testing corner case" << endl;
+	l15.elementSwap(-1); // should give an error
+	l15.elementSwap(9); // should give an error
+	
+	cout << "Testing listCopy on a list of chars" << endl;
+	forward_list<char> l16;
+	l16.push_front('c');
+	l16.push_front('a');
+	l16.push_front('v');
+	l16.push_front('e');
+	
+	forward_list<char> l17;
+	l17.push_front('t');
+	l17.push_front('j');
+	
+	listCopy(l16, l17);
+	print(l17);
+	cout << endl;
+	forward_list<int> l18;
+	l18.push_front(3);
+	l18.push_front(2);
+	printLots(l17, l18);
+	cout << endl;
+	
+	cout << "Testing listCopy when the first list passed-in is empty" << endl;
+	forward_list<char> l19;
+	cout << "List being changed: ";
+	print(l17);
+	cout << endl;
+	listCopy(l19, l17);
+	cout << "After using listCopy: ";
+	print(l17);
+	cout << endl;
+	
+	cout << "Testing when the second list passed-in is empty" << endl;
+	cout << "List being changed: ";
+	print(l19);
+	cout << endl;
+	cout << "List being copied: ";
+	print(l17);
+	cout << endl;
+	listCopy(l17, l19);
+	print(l19);
+	cout << endl;
+	
+	cout << "Testing printLots on a list of characters" << endl;
+	forward_list<int> l20;
+	l20.push_front(-1);
+	printLots(l19, l20); // should output an error;
+	forward_list<int> l21;
+	l21.push_front(5);
+	l21.push_front(3);
+	l21.push_front(0);
+	cout << "positions: ";
+	print(l21);
+	cout << endl;
+	cout << "using printLots: ";
+	printLots(l19, l21);
+	cout << endl;
+	
 	return 0;
 }
