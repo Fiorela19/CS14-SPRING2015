@@ -187,9 +187,8 @@ class List {
 template <typename Type>
 void listCopy(forward_list<Type> L, forward_list<Type> &P)
 {
-    if(L.begin() == L.end()) return; // case if L is empty
-    class forward_list<Type> temp;
-    class forward_list<Type>::iterator it1;
+    class forward_list<Type> temp; // temp forward-list to store P's values
+    class forward_list<Type>::iterator it1; // iterator for list P
 	for(it1 = P.begin(); it1 != P.end(); ++it1)
 	{
 		//push front all of P's values onto a temporary forward_list
@@ -206,6 +205,8 @@ void listCopy(forward_list<Type> L, forward_list<Type> &P)
 	for(itt = temp.begin(); itt != temp.end(); ++itt)
 	{
 		//push front all of temp's values back onto P
+		// since they were stored in reverse order in temp they will now be
+		// in the original order
 		P.push_front(*itt);
 	}
 }
