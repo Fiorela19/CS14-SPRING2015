@@ -289,6 +289,7 @@ int main()
 	print(l17);
 	cout << endl;
 	listCopy(l17, l19);
+	cout << "After using listCopy: ";
 	print(l19);
 	cout << endl;
 	
@@ -300,6 +301,9 @@ int main()
 	l21.push_front(5);
 	l21.push_front(3);
 	l21.push_front(0);
+	cout << "List: ";
+	print(l19);
+	cout << endl;
 	cout << "positions: ";
 	print(l21);
 	cout << endl;
