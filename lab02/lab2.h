@@ -1,3 +1,19 @@
+// Monica Moreno
+// 861174030
+// April 19, 2015
+// lab2.h contains the classes Node and List as well as the forward_list
+// functions I implemented. The functions in lab2.h are implemented using
+// templates. I implemeted a List class that creates a singly linked list which
+// uses the Node class. List is a friend class of Node so that it can access 
+// its private data members. I created an additional print function so that I 
+// could view the lists while I tested the functions. 
+// The forward_list functions I implemented contain the use of iterators which
+// are used to traverse the forward_lists when necessary. 
+// Additionally, the functions output error messages for corner cases.
+// lab2.cpp contains the the helper function isPrime and the recursive function
+// primeCount. primeCount makes use of the forward_list functions front, empty, 
+// and pop_front.
+
 #ifndef __LAB2_H__
 #define __LAB2_H__
 
@@ -68,7 +84,7 @@ class List {
     // inserts val to the end of the list
     void push(Type val)
     {
-        Node<Type> *tmp = new Node<Type>(val); //create new Node that contains the val
+        Node<Type> *tmp = new Node<Type>(val); //create new Node containing val
         if(head == 0) // check case of an empty list
         {
             head = tmp; // set head to the new Node
@@ -157,7 +173,7 @@ class List {
     	
     	// before is a pointer to keep track of the node before node at pos
     	Node<Type> *before = head;
-    	Node<Type> *atPos = head; // pointer to keep track of the node at position pos
+    	Node<Type> *atPos = head; //pointer to keep track of the node at pos
     	
     	Node<Type> *after = 0;
     	// after is a pointer to keep track of the node after the node at pos
