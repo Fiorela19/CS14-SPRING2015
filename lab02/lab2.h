@@ -19,7 +19,6 @@
 
 #include <forward_list>
 #include <iostream>
-#include <sstream>
 
 using namespace std;
 
@@ -46,30 +45,6 @@ class List {
     List() // default constructor, creates empty list
     : head(0), tail(0) // initialize head and tail to 0
     {}
-    
-    // constructs list from passed in string
-    List(const string& str)
-    : head(0), tail(0)
-    {
-        stringstream s; 
-        s << str; // put str into s stringstream
-        Type c; // variable to hold each individual character
-        while(s >> c)
-        {
-            push(c); // push c onto the list using the function push
-        }
-    }
-    
-    List(List &list) // copy constructor
-    : head(0), tail(0) // initialize head and tail to 0
-    {
-        // use curr (a Node pointer to traverse the list)
-        // loop ends when curr reaches the last Node
-        for(Node<Type> *curr = list.head; curr != 0; curr = curr->next)
-        {
-            push(curr->data); // push function to add Nodes to the list
-        }
-    }
     
     // destructor
     ~List()
