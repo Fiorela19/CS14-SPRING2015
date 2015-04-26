@@ -25,14 +25,15 @@ using namespace std;
 
 int main()
 {
-	// int size;
-	// int max;
-	// cout << "Enter the size: ";
-	// cin >> size;
-	// cout << "Enter the maxtop: ";
-	// cin >> max;
+	int size;
+	int max;
+	cout << "Enter the size: ";
+	cin >> size;
+	cout << "Enter the maxtop: ";
+	cin >> max;
 	
-	// TwoStackFixed test1(size, max);
+	TwoStackFixed<int> test1(size, max);
+	test1.pushStack1(5);
 	
 	cout << " - Testing TwoStackFixed" << endl;
 	TwoStackFixed<int> test2(4, 2);
