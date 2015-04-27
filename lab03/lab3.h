@@ -373,6 +373,7 @@ void showTowerStates2(int n, stack<T>& A, stack<T>& B, stack<T>& C)
 	{
 		C.push(A.top()); // move A's top to C
 		A.pop();
+		return;
 	}
 	else
 	{
