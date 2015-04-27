@@ -371,7 +371,7 @@ void showTowerStates2(int n, stack<T>& A, stack<T>& B, stack<T>& C)
 {
 	if(n == 1) // base case
 	{
-		C.push(A.top()); // move A's top to C
+		C.push(A.top()); // moves A's top to C
 		A.pop();
 		return;
 	}
