@@ -354,13 +354,13 @@ void showTowerStates(int n, char a, char b, char c)
 {
 	if(n == 1) // base case
 	{
-		cout << "Moved " << n << " from peg " << a << " to peg " << b << endl;
+		cout << "Moved " << n << " from peg " << a << " to " << b << endl;
 		return;
 	}
 	else
 	{
 		showTowerStates(n - 1, a, c, b); // recursive call
-		cout << "Moved " << n << " from peg " << a << " to peg " << b << endl;
+		cout << "Moved " << n << " from peg " << a << " to " << b << endl;
 		showTowerStates(n - 1, c, b, a); // recursive call
 	}
 }
