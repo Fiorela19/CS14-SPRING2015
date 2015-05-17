@@ -1,3 +1,20 @@
+// Monica Moreno
+// 861174030
+// May 16, 2015
+// Approach: I implemented the function selection sort using templates to sort
+// the elements of the container passed-in. The function calls a different
+// helper function depending on the container passed-in using function
+// overloading. This is done in order to sort containers with pairs since
+// pairs have a first and second which need to be accounted for. The
+// selectionsort function I wrote is stable because when containers have 
+// repeated elements, the repeated elements remain in the same relative 
+// position. In order to make selectionsort stable, elements are only swapped
+// if the element at the ith position and the smallest element found are 
+// different. selectionsort.h contains my selectionsort implementation as 
+// well as the helper function implementations. main.cc contains the testcases
+// for different types of containers as well as code that tests the
+// selectionsort function's stability.
+
 #include "selectionsort.h"
 #include <iostream>
 #include <vector>

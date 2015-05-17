@@ -1,3 +1,7 @@
+Monica Moreno
+861174030
+May 16, 2015
+
 Lab6 Question 2
 
 Part a
