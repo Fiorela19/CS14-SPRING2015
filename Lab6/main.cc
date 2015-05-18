@@ -1,8 +1,8 @@
 // Monica Moreno
 // 861174030
-// May 16, 2015
+// May 18, 2015
 // Approach: I implemented the function selection sort using templates to sort
-// the elements of the container passed-in. The function calls a different
+// the elements of the container passed-in. The function calls a print
 // helper function depending on the container passed-in using function
 // overloading. This is done in order to sort containers with pairs since
 // pairs have a first and second which need to be accounted for. The
@@ -10,7 +10,8 @@
 // repeated elements, the repeated elements remain in the same relative 
 // position. In order to make selectionsort stable, elements are only swapped
 // if the element at the ith position and the smallest element found are 
-// different. selectionsort.h contains my selectionsort implementation as 
+// different. A counter is used to keep track of the number of moves made.
+// selectionsort.h contains my selectionsort implementation as 
 // well as the helper function implementations. main.cc contains the testcases
 // for different types of containers as well as code that tests the
 // selectionsort function's stability.
@@ -120,32 +121,6 @@ int main()
 	test2.push_back(2);
 	
 	selectionsort(test2);
-	
-	// testing selectionsort on an array
-	int test3[5];
-	test3[0] = 9;
-	test3[1] = 2;
-	test3[2] = 3;
-	test3[3] = 1;
-	test3[4] = 5;
-	
-	int s = sizeof(test3) / sizeof(int);
-	selectionsort(test3 , s);
-	
-	// Testing selectionsort on an array of pairs
-	pair<int, int> test11[5];
-	pair<int, int> pr1(3, 4);
-	pair<int, int> pr2(5, 3);
-	pair<int, int> pr3(1, 4);
-	pair<int, int> pr4(2, 3);
-	pair<int, int> pr5(3, 7);
-	test11[0] = pr1;
-	test11[1] = pr2;
-	test11[2] = pr3;
-	test11[3] = pr4;
-	test11[4] = pr5;
-	
-	selectionsort(test11, 5);
 	
 	cout << endl;
 	cout << " - Stability tests - " << endl;

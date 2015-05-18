@@ -16,9 +16,9 @@ for loop that iterates through the container but after the nested for loop that
 finds the smallest element I put an if statement that checks if the elements to 
 be swaped are the same (the elements to be swapped being the element at the 
 current ith position and the smallest element found). If the elements are the 
-same then they are not swapped. Since the for loop iterates through the
-container from left to right, when there are repeated elements, they remain in
-the same realitve position. 
+same, they are not swapped. Since the for loop iterates through the container 
+from left to right, when there are repeated elements, they remain in the same 
+realitve position. 
 
 Part b
 I wrote a program that tests my code's stability in my main.cc file. The tests
