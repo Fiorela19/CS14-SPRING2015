@@ -6,6 +6,7 @@ Advantages
  - The worst case runtime is O(logn)
  - Uses less memory than a hash table
  - When iterating through a tree the contents are in-order
+
 Disadvantages
  - insertion takes longer
  - on average look up takes longer than for hash tables
@@ -16,6 +17,7 @@ Advantages
  - Search is at best O(1) which is faster that searching in trees
  - Deletion is O(1) on average
  - On average the runtime for find and insert are faster than trees
+
 Disadvantages
  - The elements are not ordered
  - Iterating though a hash table is not in order
