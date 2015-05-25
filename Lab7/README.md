@@ -1,6 +1,7 @@
 Lab 7
 Part B
 Self-Balancing Tree
+
 Advantages
  - It is already balanced and in-order
  - The worst case runtime is O(logn)
@@ -13,6 +14,7 @@ Disadvantages
  - on average hash tables are faster
 
 Hash Tables
+
 Advantages
  - Search is at best O(1) which is faster that searching in trees
  - Deletion is O(1) on average
