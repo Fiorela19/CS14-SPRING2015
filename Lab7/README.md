@@ -1,5 +1,6 @@
 Lab 7
 Part B
+
 Self-Balancing Tree
 
 Advantages
